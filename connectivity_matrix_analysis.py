@@ -61,6 +61,58 @@ for index in traj_list:
     csea_count.append(csea_array)
 
 
+#Find if initial position is within determined grid boxes of the Sargasso Sea (North East, SE, SW, & NW)
+for index in traj_list:
+    sargasso_ne = []
+    sargasso_se = []
+    sargasso_sw = []
+    sargasso_nw = []
+    particle = ds.sel(traj=index)
+    lon = particle['lon'].values
+    lat = particle['lat'].values 
+    XY = list(zip(lon,lat))
+    
+    if lon[0] in np.arange(-45, -39) and lat[0] in np.arange(27, 31):
+        sargasso_ne.append(1)
+    else:
+        sargasso_ne.append(0)
+    
+    if lon[0] in np.arange(-45, -39) and lat[0] in np.arange(25, 27):
+        sargasso_se.append(1)
+    else:
+        sargasso_se.append(0)
+        
+    if lon[0] in np.arange(-50, -45) and lat[0] in np.arange(25, 27):
+        sargasso_sw.append(1)
+    else:
+        sargasso_sw.append(0)
+        
+    if lon[0] in np.append(-50, -45) and lat[0] in np.arange(27, 31):
+        sargasso_nw.append(1)
+    else:
+        sargasso_nw.append(0)
+
+#Find if a particle starts and ends in each source-destination
+print('Creating connectivity matrices')
+ne_to_east_atl = sargasse_ne * east_atl_count
+ne_to_central = sargasso_ne * central_atl_count
+ne_to_west = sargasso_ne * west_atl_count
+ne_to_csea = sargasso_ne * csea_count 
+
+se_to_east_atl = sargasse_se * east_atl_count
+se_to_central = sargasso_se * central_atl_count
+se_to_west = sargasso_se * west_atl_count
+se_to_csea = sargasso_se * csea_count
+
+sw_to_east_atl = sargasse_sw * east_atl_count
+sw_to_central = sargasso_sw * central_atl_count
+sw_to_west = sargasso_sw * west_atl_count
+sw_to_csea = sargasso_sw * csea_count 
+
+nw_to_east_atl = sargasse_sw * east_atl_count
+nw_to_central = sargasso_sw * central_atl_count
+nw_to_west = sargasso_sw * west_atl_count
+nw_to_csea = sargasso_sw * csea_count 
     
 
     
