@@ -10,7 +10,7 @@ from collections import namedtuple
 Area = namedtuple("Area", "lonMin lonMax latMin latMax")
 
 EAST_EQUATORIAL_ATLANTIC_AREA = Area(-20, -4, 0, 16)
-CENTRAL_EQUATORIAL_ATLANTIC_AREA = Area(--45, -19, 0, 16)
+CENTRAL_EQUATORIAL_ATLANTIC_AREA = Area(-45, -19, 0, 16)
 WEST_EQUATORIAL_ATLANTIC_AREA = Area(-60, -44, 0, 16)
 CARIBBEAN_SEA_AREA = Area(-80, -64, 10, 21)
 
